@@ -6,11 +6,11 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends TestBase {
 
-    @Test
+    @Test(groups = "Positive")
     public void selectItemFromSideMenuTest() {
         homePage.openPage(URL);
         homePage.selectCategory();
-        Assert.assertTrue(productPage.getPageTitle().contains("Books"));
+        Assert.assertTrue(cataloguePage.getPageTitle().contains("Books"));
     }
 
 }

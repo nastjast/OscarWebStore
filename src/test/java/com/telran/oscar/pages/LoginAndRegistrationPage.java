@@ -28,12 +28,12 @@ public class LoginAndRegistrationPage extends BasePage {
     @FindBy(name = "registration_submit")
     WebElement registrationSubmitButton;
 
-    public ProductPage fillRegisterForm(String email, String validPassword, String confirmPassword) {
+    public CataloguePage fillRegisterForm(String email, String validPassword, String confirmPassword) {
         type(emaiRegisterlField, email);
         type(passwordRegisterField, validPassword);
         type(confirmPasswordField, confirmPassword);
         registrationSubmitButton.click();
-        return new ProductPage(driver);
+        return new CataloguePage(driver);
     }
 
     @FindBy(xpath = "//span[contains (text(), 'exists')]")
@@ -52,10 +52,10 @@ public class LoginAndRegistrationPage extends BasePage {
     @FindBy(name = "login_submit")
     WebElement logInBtn;
 
-    public ProductPage fillLogInForm(String email, String pass) {
+    public CataloguePage fillLogInForm(String email, String pass) {
         type(emailLoginField, email);
         type(passLoginField, pass);
         logInBtn.click();
-        return new ProductPage(driver);
+        return new CataloguePage(driver);
     }
 }

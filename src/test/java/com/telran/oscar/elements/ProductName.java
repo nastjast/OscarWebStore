@@ -14,4 +14,5 @@ public class ProductName extends Base {
     public void addProductToCart() {
         driver.findElement(By.xpath(String.format(PRODUCT_ADD_TO_CART_BTN_XPATH, label))).click();
     }
+
 }

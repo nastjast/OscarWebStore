@@ -22,4 +22,24 @@ public class BasketPage extends BasePage {
     public String getOrderTotalPrice() {
         return orderTotalPrice.getText();
     }
+
+    @FindBy(id = "id_form-0-quantity")
+    WebElement quantityField;
+
+    public BasketPage enterQuantity(String quantity) {
+        type(quantityField, quantity);
+        return this;
+    }
+
+    public String getQuantity() {
+        return quantityField.getAttribute("value");
+    }
+
+    @FindBy(xpath = "//*[@class='input-group-btn']/button")
+    WebElement updateBtn;
+
+    public BasketPage clickOnUpdateBtn() {
+        updateBtn.click();
+        return this;
+    }
 }

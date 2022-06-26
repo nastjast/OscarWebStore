@@ -10,28 +10,28 @@ import org.testng.annotations.Test;
 
 public class UnregUserHomePageTests extends TestBase {
 
-    private String searchInput = "Digital Fortress";
+    private static final String searchInput = "Digital Fortress";
 
     @BeforeMethod
     public void ensurePreconditions() {
         homePage.openPage(URL);
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "side menu elements")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "side menu elements", groups = "Positive")
     public void clickOnSideMenuLinksTest(String name) {
         new SideMenu(driver, name).clickOnSideMenuElement();
-        Assert.assertEquals(productPage.getPageTitle(), name);
+        Assert.assertEquals(cataloguePage.getPageTitle(), name);
     }
 
-    @Test
+    @Test(groups = "Positive")
     public void searchForProductTest() {
         homePage.enterDataIntoSearchField(searchInput)
                 .clickOnSearchBtn();
-        Assert.assertTrue(productPage.getPageTitle().contains(searchInput));
-        Assert.assertTrue(productPage.getProductTitle().contains(searchInput));
+        Assert.assertTrue(cataloguePage.getPageTitle().contains(searchInput));
+        Assert.assertTrue(cataloguePage.getProductTitle().contains(searchInput));
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "product names")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "product names", groups = "Positive")
     public void addProductToBasketAndComparePrices(String name) {
         String productPrice = new ProductPrice(driver, name).getProductPrice();
         homePage.clickOnAddToBasketBtn(name);

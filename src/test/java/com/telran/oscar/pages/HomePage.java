@@ -25,9 +25,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "form > input.btn")
     WebElement searchBtn;
 
-    public ProductPage clickOnSearchBtn() {
+    public CataloguePage clickOnSearchBtn() {
         searchBtn.click();
-        return new ProductPage(driver);
+        return new CataloguePage(driver);
     }
 
     @FindBy(id = "id_q")
@@ -41,9 +41,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".dropdown-submenu")
     WebElement submenuBook;
 
-    public ProductPage selectCategory() {
+    public CataloguePage selectCategory() {
         submenuBook.click();
-        return new ProductPage(driver);
+        return new CataloguePage(driver);
     }
 
     @FindBy(id = "login_link")
@@ -77,9 +77,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[contains(text(), 'pussyfoot')]")
     WebElement pussyfootLink;
 
-    public ProductPage clickOnRecommendedReadingLink() {
+    public CataloguePage clickOnRecommendedReadingLink() {
         pussyfootLink.click();
-        return new ProductPage(driver);
+        return new CataloguePage(driver);
     }
 
     public String getRecommendedReadingProductName() {

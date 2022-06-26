@@ -12,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.lang.reflect.Method;
@@ -22,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase implements ITestConstants {
     public WebDriver driver;
     public LoginSteps loginSteps;
-    public ProductPage productPage;
+    public CataloguePage cataloguePage;
     public HomePage homePage;
     public LoginAndRegistrationPage loginAndRegistrationPage;
     public RegisterSteps registerSteps;
@@ -30,6 +29,7 @@ public class TestBase implements ITestConstants {
     public ChangePasswordPage changePasswordPage;
     public EditProfilePage editProfilePage;
     public BasketPage basketPage;
+    public ProductPage productPage;
 
     Logger logger = LoggerFactory.getLogger(TestBase.class);
 
@@ -76,7 +76,7 @@ public class TestBase implements ITestConstants {
 
     public void initPage() {
         loginSteps = new LoginSteps(driver);
-        productPage = new ProductPage(driver);
+        cataloguePage = new CataloguePage(driver);
         loginAndRegistrationPage = new LoginAndRegistrationPage(driver);
         registerSteps = new RegisterSteps(driver);
         homePage = new HomePage(driver);
@@ -84,10 +84,11 @@ public class TestBase implements ITestConstants {
         changePasswordPage = new ChangePasswordPage(driver);
         editProfilePage = new EditProfilePage(driver);
         basketPage = new BasketPage(driver);
+        productPage = new ProductPage(driver);
     }
 
 
-    @AfterMethod()
+   // @AfterMethod()
     public void closeDriver(ITestResult result) {
         if (result.isSuccess()) {
             logger.info("Test result: PASSED");
