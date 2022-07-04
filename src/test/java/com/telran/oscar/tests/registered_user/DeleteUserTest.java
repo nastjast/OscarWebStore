@@ -12,12 +12,12 @@ public class DeleteUserTest extends TestBase {
         registerSteps.openPageAndRegister(REGISTRATION_EMAIL, VALID_PASSWORD, VALID_PASSWORD);
     }
 
-    @Test
-    public void deleteRegisteredUserTest() {
-        homePage.clickOnAccountLink()
-                .clickOnDeleteProfileBtn()
-                .enterPasswordAndDelete(VALID_PASSWORD);
-        Assert.assertTrue(productPage.getSuccessMsg().contains(DELETED_ACC_MSG));
-        Assert.assertTrue(homePage.isLogInLinkDisplayed());
-    }
+    @Test(groups = {"Positive", "Smoke", "Regression"})
+            public void deleteRegisteredUserTest(){
+            homePage.clickOnAccountLink()
+            .clickOnDeleteProfileBtn()
+            .enterPasswordAndDelete(VALID_PASSWORD);
+            Assert.assertTrue(cataloguePage.getSuccessMsg().contains(DELETED_ACC_MSG));
+            Assert.assertTrue(homePage.isLogInLinkDisplayed());
+            }
 }

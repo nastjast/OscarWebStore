@@ -12,12 +12,12 @@ public class ProductTest extends TestBase {
         loginSteps.logIn(VALID_EMAIL, VALID_PASSWORD);
     }
 
-    @Test
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void checkRecommendedReadingLinkTest() {
         String titleOnHomePage = homePage.getRecommendedReadingProductName();
         String priceOnHomePage = homePage.getRecommendedReadingProductPrice();
         homePage.clickOnRecommendedReadingLink();
-        String titleOnProductPage = productPage.getProductTitleOnProductPage();
+        String titleOnProductPage = cataloguePage.getProductTitleOnProductPage();
         String priceOnProductPage = productPage.getProductPriceOnProductPage();
         Assert.assertEquals(titleOnHomePage, titleOnProductPage);
         Assert.assertEquals(priceOnHomePage, priceOnProductPage);

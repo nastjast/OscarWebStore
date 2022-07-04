@@ -10,8 +10,6 @@ import java.util.List;
 
 public class DataProvider {
 
-    int i = (int) ((System.currentTimeMillis() / 1000) % 3600);
-
     @org.testng.annotations.DataProvider(name = "registrationWithInvalidEmailFromCSV")
     public static Iterator<Object[]> registrationWithInvalidEmailFromCSV() throws IOException {
         List<Object[]> list = new ArrayList<>();

@@ -13,7 +13,7 @@ public class AccountTest extends TestBase {
         homePage.clickOnAccountLink();
     }
 
-    @Test
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void changePassAndLogInWithNewOneTest() {
         changePasswordPage.clickOnChangePassBtn()
                 .changePass(VALID_PASSWORD, CHANGED_PASSWORD, CHANGED_PASSWORD);
@@ -21,10 +21,10 @@ public class AccountTest extends TestBase {
         homePage.logOut()
                 .clickOnLoginAndRegisterLink()
                 .fillLogInForm(VALID_EMAIL, CHANGED_PASSWORD);
-        Assert.assertTrue(productPage.getSuccessMsg().contains(LOGIN_MSG));
+        Assert.assertTrue(cataloguePage.getSuccessMsg().contains(LOGIN_MSG));
     }
 
-    @Test
+    @Test(groups = {"Positive","Regression"})
     public void changeProfileNameTest() {
         String originalName = editProfilePage.getUserName();
         editProfilePage.clickOnEditProfileBtn()
