@@ -14,7 +14,7 @@ public class BasketTest extends TestBase {
         homePage.openPage(URL);
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "product names", groups = "Positive")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "product names", groups = {"Positive", "Smoke", "Regression"})
     public void addProductToCartAndComparePriceOnCartPageTest(String name) {
         String productPriceOnHomePage = new ProductPrice(driver, name).getProductPrice();
         homePage.clickOnAddToBasketBtn(name)
@@ -23,7 +23,7 @@ public class BasketTest extends TestBase {
         Assert.assertEquals(basketPage.getTotalPrice(), basketPage.getOrderTotalPrice());
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Regression"})
     public void updateProductInBasket() {
         homePage.clickOnAddToBasketBtn("Neuromancer.")
                 .clickOnViewBasketBtn();

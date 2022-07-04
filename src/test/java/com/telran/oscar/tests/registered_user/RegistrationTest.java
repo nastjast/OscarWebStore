@@ -13,31 +13,31 @@ public class RegistrationTest extends TestBase {
         loginSteps.openLoginAndRegistrationPage();
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "registrationWithInvalidEmailFromCSV", groups = "Negative")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "registrationWithInvalidEmailFromCSV", groups = {"Negative", "Regression"})
     public void registerNewUserWithInvalidEmailTest(String email) {
         loginAndRegistrationPage.fillRegisterForm(email, VALID_PASSWORD, VALID_PASSWORD);
         Assert.assertTrue(loginAndRegistrationPage.isRegisterFormDisplayed());
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "registrationWithInvalidPasswordFromCSV", groups = "Negative")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "registrationWithInvalidPasswordFromCSV", groups = {"Negative", "Regression"})
     public void registerNewUserWithInvalidPasswordTest(String password) {
         loginAndRegistrationPage.fillRegisterForm(REGISTRATION_EMAIL, password, password);
         Assert.assertTrue(loginAndRegistrationPage.isRegisterFormDisplayed());
     }
 
-    @Test(groups = "Negative")
+    @Test(groups = {"Negative", "Regression"})
     public void registerUserWithExistingEmailTest() {
         loginAndRegistrationPage.fillRegisterForm(VALID_EMAIL, VALID_PASSWORD, VALID_PASSWORD);
         Assert.assertTrue(loginAndRegistrationPage.getExistingUserError().contains(EXISTING_USER_MSG));
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void registerUserWithValidDataTest() {
         loginAndRegistrationPage.fillRegisterForm(REGISTRATION_EMAIL, PASS_REGISTRATION, PASS_REGISTRATION);
         Assert.assertTrue(cataloguePage.getSuccessMsg().contains(REGISTRATION_MSG));
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void logOut() {
         loginAndRegistrationPage.fillRegisterForm(REGISTRATION_EMAIL, PASS_REGISTRATION, PASS_REGISTRATION);
         homePage.logOut();

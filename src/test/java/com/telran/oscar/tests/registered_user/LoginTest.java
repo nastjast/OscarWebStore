@@ -13,7 +13,7 @@ public class LoginTest extends TestBase {
         loginSteps.openLoginAndRegistrationPage();
     }
     
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void loginWithValidCredsTest() {
         loginAndRegistrationPage.fillLogInForm(VALID_EMAIL, VALID_PASSWORD);
         Assert.assertTrue(cataloguePage.getSuccessMsg().contains(LOGIN_MSG));

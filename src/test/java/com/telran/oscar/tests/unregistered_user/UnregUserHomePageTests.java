@@ -17,13 +17,13 @@ public class UnregUserHomePageTests extends TestBase {
         homePage.openPage(URL);
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "side menu elements", groups = "Positive")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "side menu elements", groups = {"Positive", "Smoke", "Regression"})
     public void clickOnSideMenuLinksTest(String name) {
         new SideMenu(driver, name).clickOnSideMenuElement();
         Assert.assertEquals(cataloguePage.getPageTitle(), name);
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void searchForProductTest() {
         homePage.enterDataIntoSearchField(searchInput)
                 .clickOnSearchBtn();
@@ -31,7 +31,7 @@ public class UnregUserHomePageTests extends TestBase {
         Assert.assertTrue(cataloguePage.getProductTitle().contains(searchInput));
     }
 
-    @Test(dataProviderClass = DataProvider.class, dataProvider = "product names", groups = "Positive")
+    @Test(dataProviderClass = DataProvider.class, dataProvider = "product names", groups = {"Positive", "Smoke", "Regression"})
     public void addProductToBasketAndComparePrices(String name) {
         String productPrice = new ProductPrice(driver, name).getProductPrice();
         homePage.clickOnAddToBasketBtn(name);

@@ -13,7 +13,7 @@ public class ProductTest extends TestBase {
         homePage.openPage(URL);
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void chooseFirstProductAndCompareWithDetailsPageTest() {
         new SideMenu(driver, "All products").clickOnSideMenuElement();
         String nameOfBookOnProductPage = cataloguePage.getNameOfBookByIndex(0);
@@ -22,7 +22,7 @@ public class ProductTest extends TestBase {
         Assert.assertEquals(nameOfBookOnProductPage, nameOfBookOnDetailsPage);
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Regression"})
     public void chooseLastProductAndCompareWithDetailsPageTest() {
         new SideMenu(driver, "All products").clickOnSideMenuElement();
         String nameOfBookOnProductPage = cataloguePage.getNameOfBookByIndex(cataloguePage.getNamesOfBooksList().size() - 1);
@@ -31,7 +31,7 @@ public class ProductTest extends TestBase {
         Assert.assertTrue(nameOfBookOnDetailsPage.startsWith(nameOfBookOnProductPage.substring(0, 15)));
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Regression"})
     public void chooseMiddleProductAndCompareWithDetailsPageTest() {
         new SideMenu(driver, "All products").clickOnSideMenuElement();
         String nameOfBookOnProductPage = cataloguePage.getNameOfBookByIndex(cataloguePage.getNamesOfBooksList().size() / 2);
@@ -40,7 +40,7 @@ public class ProductTest extends TestBase {
         Assert.assertTrue(nameOfBookOnDetailsPage.startsWith(nameOfBookOnProductPage.substring(0, 15)));
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void clickOnPaginationButtonAndComparePageNumber() {
         new SideMenu(driver, "All products").clickOnSideMenuElement();
         String paginationTextBeforeClicking = cataloguePage.getPaginationText();

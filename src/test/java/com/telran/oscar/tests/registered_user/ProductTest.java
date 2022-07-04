@@ -12,7 +12,7 @@ public class ProductTest extends TestBase {
         loginSteps.logIn(VALID_EMAIL, VALID_PASSWORD);
     }
 
-    @Test(groups = "Positive")
+    @Test(groups = {"Positive", "Smoke", "Regression"})
     public void checkRecommendedReadingLinkTest() {
         String titleOnHomePage = homePage.getRecommendedReadingProductName();
         String priceOnHomePage = homePage.getRecommendedReadingProductPrice();
