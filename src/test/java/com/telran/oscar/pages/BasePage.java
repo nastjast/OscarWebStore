@@ -10,7 +10,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 
@@ -38,7 +42,7 @@ public class BasePage {
         new WebDriverWait(driver, time).until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 
-    public void openPage (String url) {
+    public void openPage(String url) {
         driver.get(url);
     }
 
@@ -62,5 +66,15 @@ public class BasePage {
             e.printStackTrace();
         }
         return screenshot.getAbsolutePath();
+    }
+
+    public Screenshot takeScreenshotWithScroll() {
+        Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(ShootingStrategies.scaling(1.0f), 1000)).takeScreenshot(driver);
+        try {
+            ImageIO.write(screenshot.getImage(), "png", new File("screenshots/screen" + System.currentTimeMillis() + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return screenshot;
     }
 }

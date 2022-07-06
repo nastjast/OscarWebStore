@@ -93,7 +93,7 @@ public class TestBase implements ITestConstants {
         if (result.isSuccess()) {
             logger.info("Test result: PASSED");
         } else {
-            logger.error("Test result: FAILED" + "\n" + new BasePage(driver).takeScreenshot());
+            logger.error("Test result: FAILED" + "\n" + new BasePage(driver).takeScreenshotWithScroll());
         }
         if (driver != null) {
             driver.quit();
